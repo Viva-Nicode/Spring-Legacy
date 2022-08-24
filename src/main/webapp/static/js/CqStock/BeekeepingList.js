@@ -1,4 +1,4 @@
-import Beekeeping from './Beekeeping'
+const Beekeeping = require('./Beekeeping');
 
 /**
  * @param validStockTable 유효한 턴만 표현된 2차원 배열
@@ -8,7 +8,7 @@ import Beekeeping from './Beekeeping'
  * @descripter 
  * obj의 프로퍼티인 stockNumber 는 0 ~ 4의 값을 가진다.
  */
-export default class BeekeepingList {
+class BeekeepingList {
 	#validStockTable;
 	#beekeepingList;
 	#highestTurnArray;
@@ -25,6 +25,7 @@ export default class BeekeepingList {
 			if (row[1] != null || row[2] != null || row[3] != null ||
 				row[4] != null || row[5] != null) {
 				this.#validStockTable = pst.slice(this.#currentTurn, idx + 1);
+				break;
 			}
 		}
 
@@ -38,7 +39,7 @@ export default class BeekeepingList {
 				if (sPrice == 0 || (m != null && m <= sPrice)) {
 					sTurn = j;
 					sPrice = m;
-				} else if (m != null && m > sPrice) {  // 오름
+				} else if (m != null && m > sPrice) {
 					this.#beekeepingList.push(new Beekeeping(
 						i - 1, sTurn, sPrice, j, m, Number(m) - Number(sPrice)));
 					sPrice = m;
@@ -51,14 +52,16 @@ export default class BeekeepingList {
 			return a.sTurn - b.sTurn;
 		});
 
-		console.log(this.#beekeepingList);
+		for(let i = 0; i < this.#beekeepingList.length; i++){
+			console.log('beekeeping list : ' + this.#beekeepingList[i].stockNumber);
+		}
 
 		for (let idx = 1; idx < this.#beekeepingList.length; idx++) {
-			this.#beekeepingList[0].setPriority(1);
+			this.#beekeepingList[0].setPriority = 1;
 			if (this.#beekeepingList[0].isOverlap(this.#beekeepingList[idx]))
-				this.#beekeepingList[idx].setPriority(1);
+				this.#beekeepingList[idx].setPriority = 1;
 			else
-				this.#beekeepingList[idx].setPriority(2);
+				this.#beekeepingList[idx].setPriority = 2;
 		}
 
 		for (let colidx = 1; colidx <= 5; colidx++) {
@@ -195,15 +198,4 @@ export default class BeekeepingList {
 	}
 };
 
-/*
-function (전체 차트를 인자로 받음)
-{
-		beekeepingArray를 맴버로 가진다.
-
-		받은 차트를 유효한 만큼 자르고 양봉리스트 생성.
-		각 종목마다 최고점 턴, 최고점 값 가지는 배열 생성.
-
-		function
-
-}
-*/
+module.exports = BeekeepingList;

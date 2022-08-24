@@ -1,4 +1,4 @@
-export default class beekeeping {
+class beekeeping {
 	stockNumber;
 	sTurn;
 	sPrice;
@@ -49,3 +49,4 @@ export default class beekeeping {
 	}
 };
 
+module.exports = beekeeping;
