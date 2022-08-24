@@ -13,7 +13,13 @@
     "@emotion/styled": "^11.9.3",
     "@material-ui/core": "^4.12.4",
     "@mui/material": "^5.9.1",
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.9",
+    "date-fns": "^2.21.1",
+    "date-fns-tz": "^1.1.4",
     "generator-code": "^1.6.12",
+    "lodash": "^4.17.20",
+    "puppeteer": "^9.1.1",
     "yo": "^4.3.0"
   }
 }
