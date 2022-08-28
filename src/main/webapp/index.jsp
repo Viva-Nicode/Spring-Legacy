@@ -25,18 +25,6 @@ isELIgnored="false" import="java.util.*, db.*"%>
 		}
 	}
 
-	function* gen(){
-		yield 1;
-		yield 2;
-		yield 3;
-	}
-	
-	let iter = gen();
-	console.log(iter.next());
-	console.log(iter.next());
-	console.log(iter.next());
-	console.log(iter.next());
-
 </script>
 <c:set var="l" value="<%=l %>" scope="page" />
 <c:set var="il" value="<%=il %>" scope="page" />
